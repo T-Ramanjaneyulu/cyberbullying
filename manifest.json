@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Hate Speech Detector for Messaging Platforms",
+  "version": "1.0",
+  "description": "Detects hate speech on WhatsApp, Telegram, and Instagram Web",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": [
+    "*://web.whatsapp.com/*",
+    "*://web.telegram.org/*",
+    "*://webk.telegram.org/*",
+    "*://www.instagram.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://web.whatsapp.com/*",
+        "*://web.telegram.org/*",
+        "*://webk.telegram.org/*",
+        "*://www.instagram.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Hate Speech Detector",
+    "default_icon": {
+      "16": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  }
+}
